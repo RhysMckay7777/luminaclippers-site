@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+import ClipperApplicationBanner from "./components/ClipperApplicationBanner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -81,9 +83,27 @@ export default function RootLayout({
         <OrganizationSchema />
         <ServiceSchema />
         <FAQSchema />
+        {/* Google Ads Tag */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17963606996"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17963606996');
+          `}
+        </Script>
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-black text-white`}>
-        {children}
+        <div className="fixed top-0 left-0 right-0 z-[9999]">
+          <ClipperApplicationBanner />
+        </div>
+        <div className="pt-[52px]">
+          {children}
+        </div>
       </body>
     </html>
   );
