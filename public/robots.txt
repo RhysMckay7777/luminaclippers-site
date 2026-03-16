@@ -1,0 +1,5 @@
+# robots.txt for luminaclippers.com
+User-agent: *
+Allow: /
+
+Sitemap: https://luminaclippers.com/sitemap.xml
