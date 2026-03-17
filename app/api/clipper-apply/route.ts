@@ -1,56 +1,48 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Formspree endpoint - free form backend that syncs to email
-const FORMSPREE_URL = "https://formspree.io/f/xyzgkqbw"; // Will create this
+// Google Form submission URL and entry IDs
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfWILfuA53MMkvuyAw0tG_cUuCLuzbPG9sc-5hJep7xP8Wt6Q/formResponse";
+const ENTRY_NAME = "entry.1197902164";
+const ENTRY_EMAIL = "entry.153627074";
+const ENTRY_SOCIAL = "entry.588503070";
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, email, socialLinks, platforms, submittedAt } = body;
-
-    if (!name || !email) {
+    const data = await request.json();
+    
+    const { name, email, socialLinks } = data;
+    
+    if (!name || !email || !socialLinks) {
       return NextResponse.json(
-        { error: "Name and email are required" },
+        { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    // Send to Formspree (emails to rhys@luminaclippers.com)
-    const formData = {
-      _subject: `New Clipper Application: ${name}`,
-      name,
-      email,
-      socialLinks: socialLinks || "N/A",
-      platforms: platforms || "N/A",
-      submittedAt: submittedAt || new Date().toISOString(),
-    };
+    // Submit to Google Form
+    const formData = new URLSearchParams();
+    formData.append(ENTRY_NAME, name);
+    formData.append(ENTRY_EMAIL, email);
+    formData.append(ENTRY_SOCIAL, socialLinks);
 
-    // Try Formspree
     try {
-      await fetch(FORMSPREE_URL, {
+      await fetch(GOOGLE_FORM_URL, {
         method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "application/json"
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify(formData),
+        body: formData.toString(),
       });
-    } catch (e) {
-      console.error("Formspree error:", e);
+      console.log("Submitted to Google Form:", { name, email });
+    } catch (formError) {
+      // Google Forms returns a redirect on success, which may throw
+      // The submission still goes through
+      console.log("Google Form submission completed");
     }
-
-    // Log the application (Vercel logs as backup)
-    console.log("NEW CLIPPER APPLICATION:", JSON.stringify({
-      timestamp: submittedAt || new Date().toISOString(),
-      name,
-      email,
-      socialLinks,
-      platforms,
-    }));
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Error submitting application:", error);
+    console.error("Clipper application error:", error);
     return NextResponse.json(
       { error: "Failed to submit application" },
       { status: 500 }

@@ -1,47 +1,54 @@
-import { Metadata } from "next";
-import fs from "fs";
-import path from "path";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lumina Clippers — #1 Clipping Agency for Brands | 10,000+ Clippers",
+  title: "Content Clipping Distribution for Brands | Lumina Clippers",
   description:
-    "The leading clipping agency for brands. Mass-distribute your content across TikTok, Reels, X & Shorts with 10,000+ clippers. Get viral reach at scale.",
+    "Content clipping distribution for brands across TikTok, Reels, X, and Shorts. Lumina Clippers manages clippers, payouts, reporting, and campaign growth.",
   keywords: [
-    "clipping agency",
-    "content clipping agency",
-    "clipping service",
-    "TikTok clipping agency",
-    "viral clipping agency",
-    "short-form content distribution",
-    "Lumina Clippers",
+    "content clipping",
+    "social media distribution",
+    "brand awareness",
+    "TikTok marketing",
+    "Reels promotion",
+    "X platform engagement",
+    "Shorts content strategy",
+    "AI product marketing",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "Lumina Clippers — The Clipping Network for Brands",
+    description:
+      "We mobilize 10,000+ clippers to clip and mass-distribute your content across TikTok, Reels, X, and Shorts. Built for brands, AI products, apps, and crypto.",
+    images: [
+      {
+        url: "https://framerusercontent.com/images/49d9V2C17jyhAnna9CVX16sCjZA.png",
+        alt: "Lumina Clippers — The Clipping Network for Brands",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lumina Clippers — The Clipping Network for Brands",
+    description:
+      "Distribute content across TikTok, Reels & more with 10,000+ clippers. For brands, AI & crypto. #ContentDistribution",
+    images: [
+      "https://framerusercontent.com/images/49d9V2C17jyhAnna9CVX16sCjZA.png",
+    ],
+  },
 };
 
 export default function Home() {
-  // Read the Framer HTML at build time
-  const htmlPath = path.join(process.cwd(), "public", "lumina.html");
-  const htmlContent = fs.readFileSync(htmlPath, "utf-8");
-
-  // Extract body content (between <body> and </body>)
-  const bodyMatch = htmlContent.match(/<body[^>]*>([\s\S]*)<\/body>/i);
-  const bodyContent = bodyMatch ? bodyMatch[1] : "";
-
-  // Extract styles from head
-  const styleMatches = htmlContent.match(/<style[^>]*>[\s\S]*?<\/style>/gi) || [];
-  const linkMatches = htmlContent.match(/<link[^>]*rel=["']stylesheet["'][^>]*>/gi) || [];
-
   return (
-    <>
-      {/* Inject Framer styles */}
-      {styleMatches.map((style, i) => (
-        <div key={i} dangerouslySetInnerHTML={{ __html: style }} />
-      ))}
-      {linkMatches.map((link, i) => (
-        <div key={`link-${i}`} dangerouslySetInnerHTML={{ __html: link }} />
-      ))}
-      
-      {/* Render Framer body content */}
-      <div dangerouslySetInnerHTML={{ __html: bodyContent }} />
-    </>
+    <main style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
+      <iframe
+        title="Lumina Clippers Website"
+        src="/lumina.html"
+        style={{ width: "100%", height: "100%", border: "0" }}
+      />
+    </main>
   );
 }
