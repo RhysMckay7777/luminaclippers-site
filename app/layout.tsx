@@ -101,6 +101,21 @@ export default function RootLayout({
             gtag('config', 'AW-17977271671');
           `}
         </Script>
+        <Script
+          id="sa-dynamic-optimization-loader"
+          strategy="afterInteractive"
+          data-uuid="6bef1a80-9a02-4969-b84b-42def0a6f238"
+        >
+          {`
+            var script = document.createElement("script");
+            script.setAttribute("nowprocket", "");
+            script.setAttribute("nitro-exclude", "");
+            script.src = "https://dashboard.searchatlas.com/scripts/dynamic_optimization.js";
+            script.dataset.uuid = "6bef1a80-9a02-4969-b84b-42def0a6f238";
+            script.id = "sa-dynamic-optimization-loader";
+            document.head.appendChild(script);
+          `}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
