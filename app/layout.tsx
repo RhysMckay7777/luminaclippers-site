@@ -117,12 +117,8 @@ export default function RootLayout({
               "name": "Lumina Clippers",
               "url": "https://luminaclippers.com",
               "logo": "https://luminaclippers.com/logo.png",
-              "description": "Content clipping distribution for brands across TikTok, Reels, X, and Shorts. We manage clippers, payouts, reporting, and campaign growth.",
+              "description": "Content clipping distribution for brands across TikTok, Reels, X, and Shorts. We manage 62,900+ clippers, payouts, reporting, and campaign growth.",
               "foundingDate": "2024",
-              "numberOfEmployees": {
-                "@type": "QuantitativeValue",
-                "value": "62900+"
-              },
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "1209 Mountain Road PL NE Ste H",
@@ -146,10 +142,11 @@ export default function RootLayout({
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
+                "name": "Lumina Clippers Sales",
                 "contactType": "sales",
                 "telephone": "+971588241651",
                 "email": "rhys@luminaclippers.com",
-                "url": "https://luminaclippers.com/contact"
+                "availableLanguage": "English"
               }
             })
           }}
