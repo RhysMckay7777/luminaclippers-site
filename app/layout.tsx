@@ -123,14 +123,32 @@ export default function RootLayout({
                 "@type": "QuantitativeValue",
                 "value": "62900+"
               },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 Mountain Road PL NE Ste H",
+                "addressLocality": "Albuquerque",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "telephone": "+971588241651",
+              "email": "rhys@luminaclippers.com",
+              "founder": {
+                "@type": "Person",
+                "name": "Rhys McKay",
+                "jobTitle": "Founder & CEO",
+                "url": "https://www.linkedin.com/in/rhys-mckay-founder-luminaclipping/"
+              },
               "sameAs": [
                 "https://x.com/luminaclippers",
-                "https://linkedin.com/company/luminaclippers",
+                "https://www.linkedin.com/in/rhys-mckay-founder-luminaclipping/",
                 "https://instagram.com/luminaclippers"
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "sales",
+                "telephone": "+971588241651",
+                "email": "rhys@luminaclippers.com",
                 "url": "https://luminaclippers.com/contact"
               }
             })
