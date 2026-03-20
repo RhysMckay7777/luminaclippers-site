@@ -124,7 +124,7 @@ export default function RootLayout({
                 "value": "62900+"
               },
               "sameAs": [
-                "https://twitter.com/luminaclippers",
+                "https://x.com/luminaclippers",
                 "https://linkedin.com/company/luminaclippers",
                 "https://instagram.com/luminaclippers"
               ],
