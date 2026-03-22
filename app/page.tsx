@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Content Clipping Distribution for Brands | Lumina Clippers",
+  title: "Clipping Agency for Brands | Lumina Clippers — Content Distribution",
   description:
-    "Content clipping distribution for brands across TikTok, Reels, X, and Shorts. Lumina Clippers manages clippers, payouts, reporting, and campaign growth.",
+    "Lumina Clippers is a clipping agency that distributes your content across TikTok, Reels, X, & Shorts. 62,900+ clippers. 18B+ views delivered. Book a consultation.",
   keywords: [
+    "clipping agency",
+    "content clipping agency",
     "content clipping",
+    "clipping service",
+    "video clipping agency",
     "social media distribution",
     "brand awareness",
     "TikTok marketing",
@@ -52,13 +56,13 @@ export default function Home() {
         height: '1px',
         overflow: 'hidden',
       }}>
-        <h1>Content Clipping Distribution for Brands Across TikTok, Reels, and Shorts</h1>
+        <h1>Clipping Agency for Brands — Content Distribution Across TikTok, Reels, and Shorts</h1>
         
         <section>
           <p>
-            <strong>Content clipping distribution</strong> is the fastest way to mass-distribute your brand across social media. 
-            Lumina Clippers transforms your long-form content into viral short-form clips and distributes them through our network 
-            of 62,900+ clippers across TikTok, Instagram Reels, YouTube Shorts, and X. Our clients average 10M+ views per month, 
+            <strong>Lumina Clippers is a clipping agency</strong> that transforms your long-form content into viral short-form clips 
+            and distributes them through our network of 62,900+ clippers across TikTok, Instagram Reels, YouTube Shorts, and X. 
+            As the leading <strong>content clipping agency</strong> for brands, we help our clients achieve 10M+ views per month, 
             generating massive brand awareness without the complexity of managing hundreds of creator relationships.
           </p>
         </section>
@@ -133,16 +137,18 @@ export default function Home() {
         </section>
 
         <section>
-          <h2>Why Choose Lumina Clippers</h2>
+          <h2>Why Choose Lumina Clippers as Your Clipping Agency</h2>
           <p>
-            Lumina Clippers is the industry&apos;s leading content clipping distribution service, trusted by brands, 
-            AI products, apps, and crypto projects. We handle the entire distribution process—from clip creation 
-            to clipper management to performance analytics—so you get massive reach without the operational complexity.
+            Lumina Clippers is the industry&apos;s leading <strong>clipping agency</strong>, trusted by brands, 
+            AI products, apps, and crypto projects. As a full-service <strong>video clipping agency</strong>, we handle 
+            the entire distribution process—from clip creation to clipper management to performance analytics—so you 
+            get massive reach without the operational complexity.
           </p>
           <p>
-            Unlike traditional influencer marketing, content clipping creates authentic, organic distribution at scale. 
-            Your content appears across thousands of accounts, creating a flood of brand awareness that compounds over time. 
-            Ready to start your clipping campaign? Book a call with our team to discuss your goals and get a custom strategy.
+            Unlike traditional influencer marketing, working with a <strong>content clipping agency</strong> like Lumina Clippers 
+            creates authentic, organic distribution at scale. Your content appears across thousands of accounts, creating a 
+            flood of brand awareness that compounds over time. Ready to start your clipping campaign? Book a call with our 
+            team to discuss your goals and get a custom strategy.
           </p>
         </section>
       </article>

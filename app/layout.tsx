@@ -16,11 +16,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://luminaclippers.com"),
-  title: "Lumina Clippers: Content Clipping & Distribution for Brands",
+  title: "Clipping Agency for Brands | Lumina Clippers — Content Distribution",
   description:
-    "Lumina Clippers: Content clipping & distribution for brands across TikTok, Reels, X, & Shorts. Book a consultation.",
+    "Lumina Clippers is a clipping agency that distributes your content across TikTok, Reels, X, & Shorts. 62,900+ clippers. 18B+ views delivered. Book a consultation.",
   keywords: [
+    "clipping agency",
+    "content clipping agency",
     "content clipping",
+    "clipping service",
+    "video clipping agency",
     "social media distribution",
     "brand awareness",
     "TikTok marketing",
@@ -112,7 +116,7 @@ export default function RootLayout({
               "name": "Lumina Clippers",
               "url": "https://luminaclippers.com",
               "logo": "https://luminaclippers.com/logo.png",
-              "description": "Content clipping distribution for brands across TikTok, Reels, X, and Shorts. We manage 62,900+ clippers, payouts, reporting, and campaign growth.",
+              "description": "Lumina Clippers is a clipping agency that distributes content for brands across TikTok, Reels, X, and Shorts. We manage 62,900+ clippers, payouts, reporting, and campaign growth.",
               "foundingDate": "2024",
               "address": {
                 "@type": "PostalAddress",
@@ -154,6 +158,14 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "FAQPage",
               "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is a clipping agency?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A clipping agency is a specialized service that transforms long-form video content into short-form clips and distributes them across social media platforms like TikTok, Instagram Reels, YouTube Shorts, and X. Unlike traditional video editing, a clipping agency manages the entire distribution process including a network of clippers who post your content to their audiences. Lumina Clippers is the leading clipping agency for brands, managing 62,900+ clippers and delivering 18B+ total views across client campaigns."
+                  }
+                },
                 {
                   "@type": "Question",
                   "name": "What is content clipping distribution?",
