@@ -151,6 +151,19 @@ export default function Home() {
             team to discuss your goals and get a custom strategy.
           </p>
         </section>
+
+        <section>
+          <h2>Learn More About Content Clipping</h2>
+          <nav>
+            <ul>
+              <li><a href="/how-content-clipping-works">Learn how content clipping works →</a></li>
+              <li><a href="/clipper-network-management">How we manage 62,900+ clippers →</a></li>
+              <li><a href="/brand-campaign-reporting">Campaign analytics and reporting →</a></li>
+              <li><a href="/services/tiktok-content-distribution">TikTok clip distribution for brands →</a></li>
+              <li><a href="/content-clipping-vs-ugc">Content clipping vs UGC comparison →</a></li>
+            </ul>
+          </nav>
+        </section>
       </article>
 
       {/* Visual Experience - Framer Design */}
