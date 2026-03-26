@@ -100,8 +100,20 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://framerusercontent.com" />
         <link rel="dns-prefetch" href="https://dashboard.searchatlas.com" />
-        <link rel="dns-prefetch" href="https://framerusercontent.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        
+        {/* Preload LCP hero image for faster paint */}
+        <link
+          rel="preload"
+          as="image"
+          href="https://framerusercontent.com/images/dvoyd8VR77Y3RUHCGPJlApIPjo.png"
+          fetchPriority="high"
+        />
+        
+        {/* Preload critical iframe */}
+        <link rel="preload" href="/lumina.html" as="document" />
         
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17977271671"
