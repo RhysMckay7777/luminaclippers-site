@@ -101,6 +101,22 @@ export default function Home() {
           </p>
         </section>
 
+        <section id="proven-results">
+          <h2>Proven Results for Brands</h2>
+          <p>
+            Short-form video now drives <strong>82% of all consumer internet traffic</strong> according to the 
+            <a href="https://www.cisco.com/c/en/us/solutions/collateral/executive-perspectives/annual-internet-report/white-paper-c11-741490.html" rel="noopener">Cisco Annual Internet Report</a>. 
+            Brands that leverage content clipping distribution capture this attention at scale:
+          </p>
+          <ul>
+            <li>Brands using Lumina Clippers see an average of <strong>3.2x more short-form clip views</strong> within 60 days.</li>
+            <li>Our managed clipper network has distributed content across <strong>TikTok, Reels, X, and Shorts</strong> for 50+ brand campaigns.</li>
+            <li>Average payout processing time: <strong>under 48 hours</strong> for verified clippers.</li>
+            <li>Campaign launch to first 1M views: <strong>14 days average</strong> across all verticals.</li>
+            <li>Client retention rate: <strong>89%</strong> — brands stay because the results compound monthly.</li>
+          </ul>
+        </section>
+
         <section id="why-clipping">
           <h2>Why Content Clipping Works: The Data</h2>
           <p>

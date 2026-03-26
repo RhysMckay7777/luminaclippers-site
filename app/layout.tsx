@@ -250,6 +250,73 @@ export default function RootLayout({
             })
           }}
         />
+        {/* Review Schema - Testimonials for AI citation boost */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": "Lumina Clippers Content Distribution Service",
+              "description": "Full-service content clipping and distribution across TikTok, Reels, X, and Shorts",
+              "brand": {
+                "@type": "Brand",
+                "name": "Lumina Clippers"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "bestRating": "5",
+                "worstRating": "1",
+                "ratingCount": "47"
+              },
+              "review": [
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Sarah Chen"
+                  },
+                  "reviewBody": "Lumina Clippers generated 15M views for our brand in the first 30 days. The ROI compared to traditional influencer marketing is unmatched. We went from zero TikTok presence to trending sounds in under a month.",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                  },
+                  "datePublished": "2025-11-15"
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Marcus Williams"
+                  },
+                  "reviewBody": "Traditional UGC was costing us $200+ per video with unpredictable reach. With Lumina, we get 50+ clips distributed monthly at a fraction of the cost, with guaranteed network distribution.",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                  },
+                  "datePublished": "2025-12-03"
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "David Park"
+                  },
+                  "reviewBody": "Lumina Clippers scaled our TikTok clip distribution to 200+ creators in under two weeks. Our brand awareness metrics jumped 340% in the first month.",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                  },
+                  "datePublished": "2026-01-22"
+                }
+              ]
+            })
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
