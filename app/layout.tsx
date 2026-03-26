@@ -80,6 +80,12 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/manifest.json",
+  // Bing Webmaster Tools verification - update after registering at bing.com/webmasters
+  verification: {
+    other: {
+      "msvalidate.01": "PENDING_BING_VERIFICATION_CODE",
+    },
+  },
 };
 
 export default function RootLayout({
