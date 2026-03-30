@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Clipping ROI Calculator | Lumina Clippers</title>
+  <meta name="description" content="Calculate your potential ROI from content clipping distribution. Compare costs vs traditional influencer marketing and paid ads.">
+  <meta name="keywords" content="content clipping ROI, clipping agency cost, TikTok marketing ROI, short-form content calculator">
+  <link rel="canonical" href="https://luminaclippers.com/tools/roi-calculator.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Content Clipping ROI Calculator | Lumina Clippers">
+  <meta property="og:description" content="Calculate your potential ROI from content clipping. Free tool from the leading clipping agency.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luminaclippers.com/tools/roi-calculator.html">
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      min-height: 100vh;
+      color: #fff;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #6366f1, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 40px;
+    }
+    .calculator {
+      background: rgba(26, 26, 46, 0.8);
+      border: 1px solid #6366f1;
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .input-group {
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      color: #d1d5db;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    input[type="number"], select {
+      width: 100%;
+      padding: 12px 16px;
+      background: #0a0a0a;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #6366f1;
+    }
+    .hint {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: translateY(-2px);
+    }
+    .results {
+      display: none;
+      background: rgba(26, 26, 46, 0.8);
+      border: 1px solid #22c55e;
+      border-radius: 16px;
+      padding: 30px;
+    }
+    .results.show { display: block; }
+    .results h2 {
+      color: #22c55e;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .stat-card {
+      background: #0a0a0a;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #6366f1;
+    }
+    .stat-label {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .comparison {
+      background: #0a0a0a;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .comparison h3 {
+      color: #d1d5db;
+      margin-bottom: 15px;
+    }
+    .comparison-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #1f2937;
+    }
+    .comparison-row:last-child { border: none; }
+    .savings { color: #22c55e; font-weight: 600; }
+    .cta {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 16px 32px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    footer a { color: #6366f1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Content Clipping ROI Calculator</h1>
+    <p class="subtitle">See how much you could save vs. traditional marketing</p>
+    
+    <div class="calculator">
+      <div class="input-group">
+        <label for="budget">Monthly Marketing Budget ($)</label>
+        <input type="number" id="budget" value="5000" min="1000" step="500">
+        <p class="hint">Your current or planned monthly spend on content distribution</p>
+      </div>
+      
+      <div class="input-group">
+        <label for="content">Long-Form Videos Per Month</label>
+        <input type="number" id="content" value="4" min="1" max="30">
+        <p class="hint">Podcasts, webinars, interviews, or videos you produce monthly</p>
+      </div>
+      
+      <div class="input-group">
+        <label for="industry">Industry</label>
+        <select id="industry">
+          <option value="crypto">Crypto / Web3</option>
+          <option value="ai">AI / SaaS</option>
+          <option value="ecommerce">E-commerce / DTC</option>
+          <option value="finance">Finance / Fintech</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <label for="goal">Primary Goal</label>
+        <select id="goal">
+          <option value="awareness">Brand Awareness</option>
+          <option value="leads">Lead Generation</option>
+          <option value="app">App Downloads</option>
+          <option value="sales">Direct Sales</option>
+        </select>
+      </div>
+      
+      <button onclick="calculate()">Calculate My ROI</button>
+    </div>
+    
+    <div class="results" id="results">
+      <h2>Your Projected Results</h2>
+      
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="views">-</div>
+          <div class="stat-label">Est. Monthly Views</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="clips">-</div>
+          <div class="stat-label">Clips Distributed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="cpm">-</div>
+          <div class="stat-label">Effective CPM</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="reach">-</div>
+          <div class="stat-label">Unique Reach</div>
+        </div>
+      </div>
+      
+      <div class="comparison">
+        <h3>Cost Comparison (Same Reach)</h3>
+        <div class="comparison-row">
+          <span>Paid Social Ads (Meta/TikTok)</span>
+          <span id="paidCost">-</span>
+        </div>
+        <div class="comparison-row">
+          <span>Influencer Marketing</span>
+          <span id="influencerCost">-</span>
+        </div>
+        <div class="comparison-row">
+          <span>Lumina Clippers</span>
+          <span id="clippersCost">-</span>
+        </div>
+        <div class="comparison-row">
+          <span>Your Savings</span>
+          <span class="savings" id="savings">-</span>
+        </div>
+      </div>
+      
+      <div class="cta">
+        <p style="color: #9ca3af; margin-bottom: 15px;">Ready to scale your content distribution?</p>
+        <a href="https://luminaclippers.com/contact">Book a Free Consultation →</a>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Based on Lumina Clippers data from 18B+ views delivered across 200+ brand campaigns.</p>
+      <p style="margin-top: 10px;"><a href="https://luminaclippers.com">← Back to Lumina Clippers</a></p>
+    </footer>
+  </div>
+  
+  <script>
+    function calculate() {
+      const budget = parseInt(document.getElementById('budget').value);
+      const content = parseInt(document.getElementById('content').value);
+      const industry = document.getElementById('industry').value;
+      
+      // Industry multipliers (crypto/AI tend to get more viral reach)
+      const multipliers = { crypto: 1.3, ai: 1.2, ecommerce: 1.0, finance: 0.9, other: 1.0 };
+      const mult = multipliers[industry] || 1.0;
+      
+      // Calculate projections based on Lumina's actual data
+      const clipsPerVideo = 12; // Average clips per long-form video
+      const totalClips = content * clipsPerVideo;
+      const viewsPerClip = 85000 * mult; // Average views per distributed clip
+      const totalViews = totalClips * viewsPerClip;
+      const uniqueReach = Math.round(totalViews * 0.35); // ~35% unique reach
+      
+      // CPM calculations
+      const effectiveCPM = (budget / (totalViews / 1000)).toFixed(2);
+      const paidAdsCPM = 25; // Average paid social CPM
+      const influencerCPM = 150; // Average influencer CPM
+      
+      // Cost to achieve same reach via other methods
+      const paidCost = Math.round((totalViews / 1000) * paidAdsCPM);
+      const influencerCost = Math.round((totalViews / 1000) * influencerCPM);
+      const savings = Math.max(paidCost - budget, 0);
+      
+      // Update display
+      document.getElementById('views').textContent = formatNumber(totalViews);
+      document.getElementById('clips').textContent = totalClips;
+      document.getElementById('cpm').textContent = '$' + effectiveCPM;
+      document.getElementById('reach').textContent = formatNumber(uniqueReach);
+      document.getElementById('paidCost').textContent = '$' + formatNumber(paidCost);
+      document.getElementById('influencerCost').textContent = '$' + formatNumber(influencerCost);
+      document.getElementById('clippersCost').textContent = '$' + formatNumber(budget);
+      document.getElementById('savings').textContent = '$' + formatNumber(savings) + '/mo';
+      
+      document.getElementById('results').classList.add('show');
+    }
+    
+    function formatNumber(num) {
+      if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+      if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
+      return num.toString();
+    }
+  </script>
+</body>
+</html>

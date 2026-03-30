@@ -1,0 +1,10 @@
+# Disavow file for luminaclippers.com
+# Generated: 2026-03-30
+# Purpose: Neutralize high-spam referring domains (50+ spam score)
+
+domain:urls-shortener.eu
+domain:jake.eu
+domain:screenshots.wiki
+domain:buzzshrink.website
+domain:ready.pro
+domain:drjack.world
