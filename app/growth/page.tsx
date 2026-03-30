@@ -2,15 +2,15 @@
 
 import { useEffect } from 'react'
 
+// Declare fbq type for TypeScript
+declare global {
+  interface Window {
+    fbq: (...args: unknown[]) => void;
+  }
+}
+
 export default function GrowthPage() {
   useEffect(() => {
-    // Declare fbq type for TypeScript
-    declare global {
-      interface Window {
-        fbq: (...args: unknown[]) => void;
-      }
-    }
-
     // Track GrowthPageView custom event
     if (typeof window !== 'undefined' && window.fbq) {
       window.fbq('trackCustom', 'GrowthPageView');
