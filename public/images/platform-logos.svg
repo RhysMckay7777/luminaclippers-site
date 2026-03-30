@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 100" width="600" height="100">
+  <!-- Background -->
+  <rect width="600" height="100" fill="#0a0a0a"/>
+  
+  <!-- TikTok -->
+  <g transform="translate(50, 20)">
+    <rect width="80" height="60" rx="8" fill="#1a1a2e" stroke="#00f2ea" stroke-width="1.5"/>
+    <text x="40" y="30" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="700">TikTok</text>
+    <text x="40" y="48" text-anchor="middle" fill="#00f2ea" font-family="system-ui" font-size="8">1B+ Users</text>
+  </g>
+  
+  <!-- Instagram Reels -->
+  <g transform="translate(170, 20)">
+    <rect width="80" height="60" rx="8" fill="#1a1a2e" stroke="#e1306c" stroke-width="1.5"/>
+    <text x="40" y="30" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="700">Reels</text>
+    <text x="40" y="48" text-anchor="middle" fill="#e1306c" font-family="system-ui" font-size="8">2B+ Users</text>
+  </g>
+  
+  <!-- YouTube Shorts -->
+  <g transform="translate(290, 20)">
+    <rect width="80" height="60" rx="8" fill="#1a1a2e" stroke="#ff0000" stroke-width="1.5"/>
+    <text x="40" y="30" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="700">Shorts</text>
+    <text x="40" y="48" text-anchor="middle" fill="#ff0000" font-family="system-ui" font-size="8">2B+ Users</text>
+  </g>
+  
+  <!-- X/Twitter -->
+  <g transform="translate(410, 20)">
+    <rect width="80" height="60" rx="8" fill="#1a1a2e" stroke="#1da1f2" stroke-width="1.5"/>
+    <text x="40" y="30" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="700">X</text>
+    <text x="40" y="48" text-anchor="middle" fill="#1da1f2" font-family="system-ui" font-size="8">500M+ Users</text>
+  </g>
+  
+  <!-- Facebook Reels -->
+  <g transform="translate(530, 20)">
+    <rect width="60" height="60" rx="8" fill="#1a1a2e" stroke="#1877f2" stroke-width="1.5"/>
+    <text x="30" y="30" text-anchor="middle" fill="#ffffff" font-family="system-ui" font-size="9" font-weight="700">FB</text>
+    <text x="30" y="48" text-anchor="middle" fill="#1877f2" font-family="system-ui" font-size="7">3B+</text>
+  </g>
+  
+  <!-- Caption -->
+  <text x="300" y="94" text-anchor="middle" fill="#6b7280" font-family="system-ui" font-size="10">Platforms We Distribute To — Lumina Clippers</text>
+</svg>
