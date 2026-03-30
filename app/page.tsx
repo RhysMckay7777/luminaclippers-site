@@ -5,7 +5,7 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "Clipping Agency for Brands | Lumina Clippers — Content Distribution",
   description:
-    "Lumina Clippers is a clipping agency that distributes your content across TikTok, Reels, X, & Shorts. 62,900+ clippers. 18B+ views delivered. Book a consultation.",
+    "Lumina Clippers distributes your content across TikTok, Reels, X, and Shorts. 62,900+ clippers. 18B+ views delivered. Book a free consultation today.",
   keywords: [
     "clipping agency",
     "content clipping agency",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: "/",
     title: "Lumina Clippers — The Clipping Network for Brands",
     description:
-      "We mobilize 10,000+ clippers to clip and mass-distribute your content across TikTok, Reels, X, and Shorts. Built for brands, AI products, apps, and crypto.",
+      "We help brands reach millions through 62,900+ clippers on TikTok, Reels, X, and Shorts. Book a free consultation.",
     images: [
       {
         url: "https://luminaclippers.com/images/results-stats.svg",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lumina Clippers — The Clipping Network for Brands",
     description:
-      "Distribute content across TikTok, Reels & more with 10,000+ clippers. For brands, AI & crypto. #ContentDistribution",
+      "Reach millions through 62,900+ clippers on TikTok, Reels, and Shorts. Book a free consultation today.",
     images: [
       "https://luminaclippers.com/images/results-stats.svg",
     ],
@@ -63,7 +63,7 @@ const imageSchemaData = {
       "url": "https://luminaclippers.com/images/clipping-process.svg",
       "contentUrl": "https://luminaclippers.com/images/clipping-process.svg",
       "name": "Lumina Clippers Content Clipping Process",
-      "description": "How Lumina Clippers content clipping works: 3-step process showing upload, AI clip selection, and multi-platform distribution to 62,900+ clippers",
+      "description": "How Lumina Clippers works: upload content, AI picks the best clips, then 62,900+ clippers share them everywhere",
       "width": 800,
       "height": 200,
       "encodingFormat": "image/svg+xml"
@@ -73,8 +73,8 @@ const imageSchemaData = {
       "@id": "https://luminaclippers.com/images/platform-logos.svg",
       "url": "https://luminaclippers.com/images/platform-logos.svg",
       "contentUrl": "https://luminaclippers.com/images/platform-logos.svg",
-      "name": "Platforms Lumina Clippers Distributes To",
-      "description": "TikTok, Instagram Reels, YouTube Shorts, X, and Facebook Reels — all platforms where Lumina Clippers distributes brand content",
+      "name": "Platforms We Post To",
+      "description": "TikTok, Instagram Reels, YouTube Shorts, X, and Facebook — where your clips get posted",
       "width": 600,
       "height": 100,
       "encodingFormat": "image/svg+xml"
@@ -84,8 +84,8 @@ const imageSchemaData = {
       "@id": "https://luminaclippers.com/images/results-stats.svg",
       "url": "https://luminaclippers.com/images/results-stats.svg",
       "contentUrl": "https://luminaclippers.com/images/results-stats.svg",
-      "name": "Lumina Clippers Results and Statistics",
-      "description": "Lumina Clippers results: 18 billion views delivered, 62,900+ active clippers, 10M+ monthly views per brand across TikTok, Reels, and Shorts",
+      "name": "Lumina Clippers Results",
+      "description": "18 billion views delivered, 62,900+ active clippers, 10M+ monthly views per brand",
       "width": 700,
       "height": 180,
       "encodingFormat": "image/svg+xml"
@@ -103,7 +103,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchemaData) }}
       />
 
-      {/* SEO Content with Images - Visible to search engines and AI crawlers */}
+      {/* SEO Content - Optimized for readability (Grade 8 level) */}
       <article 
         className="seo-content"
         style={{
@@ -120,14 +120,24 @@ export default function Home() {
           background: '#0a0a0a',
         }}
       >
-        <h1>Clipping Agency for Brands — Content Distribution Across TikTok, Reels, and Shorts</h1>
+        <h1>Clipping Agency for Brands — Get Millions of Views on TikTok, Reels, and Shorts</h1>
         
         <section>
           <p>
-            <strong>Lumina Clippers is a clipping agency</strong> that transforms your long-form content into viral short-form clips 
-            and distributes them through our network of 62,900+ clippers across TikTok, Instagram Reels, YouTube Shorts, and X. 
-            As the leading <strong>content clipping agency</strong> for brands, we help our clients achieve 10M+ views per month, 
-            generating massive brand awareness without the complexity of managing hundreds of creator relationships.
+            <strong>Lumina Clippers is a clipping agency</strong> that helps brands go viral. 
+            We turn your long videos into short clips. Then we share them everywhere.
+          </p>
+          <p>
+            Here&apos;s what sets us apart:
+          </p>
+          <ul>
+            <li><strong>62,900+ active clippers</strong> ready to share your content</li>
+            <li><strong>18B+ views delivered</strong> for brands like yours</li>
+            <li><strong>10M+ views per month</strong> on average per campaign</li>
+            <li>Posts go live on <strong>TikTok, Reels, Shorts, and X</strong></li>
+          </ul>
+          <p>
+            As a result, your brand shows up everywhere your audience scrolls.
           </p>
         </section>
 
@@ -135,142 +145,152 @@ export default function Home() {
         <figure>
           <Image
             src="/images/results-stats.svg"
-            alt="Lumina Clippers results: 18 billion views delivered, 62,900+ active clippers, 10M+ monthly views per brand across TikTok, Reels, Shorts, and X"
+            alt="Lumina Clippers results: 18 billion views, 62,900 clippers, 10M monthly views per brand"
             width={700}
             height={180}
             loading="eager"
             priority
             style={{ maxWidth: '100%', height: 'auto' }}
           />
-          <figcaption>Lumina Clippers delivers measurable results for brands</figcaption>
+          <figcaption>Real results from real campaigns</figcaption>
         </figure>
 
         <section>
           <h2>How Content Clipping Works</h2>
           <p>
-            Lumina Clippers delivers measurable reach across TikTok, Reels, X, and Shorts through a managed network 
-            of vetted clippers. Our content clipping process transforms podcasts, interviews, webinars, and livestreams 
-            into hundreds of optimized short-form clips. According to <a href="https://www.hubspot.com/state-of-marketing" rel="noopener">HubSpot&apos;s 2026 Video Marketing Report</a>, 
-            short-form content generates <strong>2.5x more engagement</strong> than long-form content, making clip 
-            distribution the highest-ROI content strategy available today.
+            Content clipping is simple. You give us your videos. We do the rest.
+          </p>
+          <p>
+            First, our AI scans your content. It finds the best moments. 
+            Next, we turn those moments into short clips. Finally, our clippers post them.
+          </p>
+          <p>
+            Short videos get <strong>2.5x more engagement</strong> than long ones. 
+            That&apos;s why clip distribution works so well.
           </p>
           
           {/* Process Diagram */}
           <figure>
             <Image
               src="/images/clipping-process.svg"
-              alt="How Lumina Clippers content clipping process works: Step 1 Upload Content (podcasts, videos, webinars), Step 2 AI Clip Selection (15-30 viral moments identified), Step 3 Mass Distribution (62,900+ clippers across all platforms)"
+              alt="3 steps: Upload your video, AI picks the best clips, clippers share them everywhere"
               width={800}
               height={200}
               loading="lazy"
               style={{ maxWidth: '100%', height: 'auto' }}
             />
-            <figcaption>The 3-step Lumina Clippers content clipping and distribution process</figcaption>
+            <figcaption>Our simple 3-step process</figcaption>
           </figure>
           
-          <h3>1. Upload Your Long-Form Content</h3>
+          <h3>Step 1: Upload Your Video</h3>
           <p>
-            Share your existing content—podcasts, interviews, webinars, product demos, or any video over 60 seconds. 
-            Our AI and human editors analyze every frame to identify viral-worthy moments. The average 60-minute video 
-            yields 15-30 clip-worthy segments with emotional hooks, valuable insights, and shareable soundbites.
+            Share any long video with us. This could be a podcast, webinar, or interview. 
+            Even product demos work great.
+          </p>
+          <p>
+            For example, a 60-minute video gives us 15-30 great clips. 
+            Each clip is 15-60 seconds long.
           </p>
           
-          <h3>2. AI-Powered Clip Selection</h3>
+          <h3>Step 2: AI Picks the Best Clips</h3>
           <p>
-            Our proprietary system identifies the top 15-60 second segments with the highest viral potential. 
-            Each clip is optimized with platform-specific formatting, auto-generated captions (98% accuracy), and 
-            hooks designed to maximize retention. Internal data shows brands using AI clip selection achieve 
-            <strong>3.2x higher engagement</strong> compared to manually edited clips.
+            Our AI finds the most engaging moments in your video. 
+            It looks for hooks that grab attention.
+          </p>
+          <p>
+            Then we add captions and format each clip for different platforms. 
+            Brands using our AI see <strong>3.2x higher engagement</strong>.
           </p>
           
-          <h3>3. Multi-Platform Distribution</h3>
+          <h3>Step 3: Clippers Share Everywhere</h3>
           <p>
-            Your clips are distributed across our network of 62,900+ vetted clippers who post to their audiences on TikTok, 
-            Instagram Reels, YouTube Shorts, and X. This creates a content cascade effect where your brand appears 
-            everywhere your target audience scrolls—generating organic reach at <strong>$2-5 CPM</strong> versus 
-            <strong>$15-40 CPM</strong> for paid social ads (<a href="https://www.wordstream.com/blog/ws/2017/02/28/facebook-advertising-benchmarks" rel="noopener">WordStream, 2025</a>).
+            This is where the magic happens. Our 62,900+ clippers post your clips to their accounts.
+          </p>
+          <p>
+            Your brand appears on thousands of feeds at once. 
+            The cost? Just <strong>$2-5 per thousand views</strong>. 
+            Compare that to $15-40 for paid ads.
           </p>
         </section>
 
         <section id="platforms">
-          <h2>Platforms We Distribute To</h2>
+          <h2>Where We Post Your Clips</h2>
           <p>
-            We distribute your content across every major short-form video platform, maximizing your reach and 
-            ensuring your brand appears wherever your audience is scrolling.
+            We post to every major short-video platform. Your brand shows up where your audience hangs out.
           </p>
           
           {/* Platform Logos */}
           <figure>
             <Image
               src="/images/platform-logos.svg"
-              alt="TikTok logo, Instagram Reels logo, YouTube Shorts logo, X logo, Facebook Reels logo — all platforms Lumina Clippers distributes brand content to"
+              alt="TikTok, Instagram Reels, YouTube Shorts, X, and Facebook logos"
               width={600}
               height={100}
               loading="lazy"
               style={{ maxWidth: '100%', height: 'auto' }}
             />
-            <figcaption>Lumina Clippers distributes content across TikTok, Instagram Reels, YouTube Shorts, X, and Facebook</figcaption>
+            <figcaption>All the platforms your audience uses</figcaption>
           </figure>
           
           <ul>
-            <li><strong>TikTok</strong> — 1B+ monthly active users, highest organic reach potential</li>
-            <li><strong>Instagram Reels</strong> — Premium audience demographics, high conversion rates</li>
-            <li><strong>YouTube Shorts</strong> — 2B+ logged-in users monthly, strong SEO benefits</li>
-            <li><strong>X (Twitter)</strong> — Real-time engagement, B2B and tech audience reach</li>
-            <li><strong>Facebook Reels</strong> — Broadest age demographics, strong retargeting opportunities</li>
+            <li><strong>TikTok</strong> — 1B+ users, best for going viral</li>
+            <li><strong>Instagram Reels</strong> — Great for sales and conversions</li>
+            <li><strong>YouTube Shorts</strong> — 2B+ users, helps your SEO</li>
+            <li><strong>X (Twitter)</strong> — Perfect for B2B and tech brands</li>
+            <li><strong>Facebook Reels</strong> — Reaches all age groups</li>
           </ul>
         </section>
 
         <section id="proven-results">
-          <h2>Proven Results for Brands</h2>
+          <h2>Results You Can Expect</h2>
           <p>
-            Short-form video now drives <strong>82% of all consumer internet traffic</strong> according to the 
-            <a href="https://www.cisco.com/c/en/us/solutions/collateral/executive-perspectives/annual-internet-report/white-paper-c11-741490.html" rel="noopener">Cisco Annual Internet Report</a>. 
-            Brands that leverage content clipping distribution capture this attention at scale:
+            Short video now drives <strong>82% of internet traffic</strong>. 
+            Brands using content clipping capture this attention fast.
+          </p>
+          <p>
+            Here&apos;s what our clients typically see:
           </p>
           <ul>
-            <li>Brands using Lumina Clippers see an average of <strong>3.2x more short-form clip views</strong> within 60 days.</li>
-            <li>Our managed clipper network has distributed content across <strong>TikTok, Reels, X, and Shorts</strong> for 50+ brand campaigns.</li>
-            <li>Average payout processing time: <strong>under 48 hours</strong> for verified clippers.</li>
-            <li>Campaign launch to first 1M views: <strong>14 days average</strong> across all verticals.</li>
-            <li>Client retention rate: <strong>89%</strong> — brands stay because the results compound monthly.</li>
+            <li><strong>3.2x more views</strong> within 60 days</li>
+            <li><strong>1M views</strong> in the first 14 days (average)</li>
+            <li><strong>89% of clients</strong> stay with us long-term</li>
+            <li>Payouts to clippers in <strong>under 48 hours</strong></li>
           </ul>
+          <p>
+            In other words, you get massive reach without the hassle.
+          </p>
         </section>
 
         <section>
-          <h2>Results Our Clients Achieve</h2>
+          <h2>Why Brands Choose Us</h2>
           <p>
-            Lumina Clippers delivers measurable, repeatable results. Our network has generated over <strong>18 billion total views</strong> 
-            across client campaigns, with an average of <strong>10M+ views per month</strong> per active campaign.
+            Building your own clipper network takes 6-12 months. It costs $200K or more just to start.
+          </p>
+          <p>
+            With Lumina Clippers, you skip all that. You get instant access to 62,900+ creators on day one.
+          </p>
+          <p>
+            We handle everything:
           </p>
           <ul>
-            <li><strong>10M+ views per month</strong> — average campaign performance across 200+ active brands</li>
-            <li><strong>62,900+ active clippers</strong> — the largest vetted clipper network for brands</li>
-            <li><strong>18B+ total views delivered</strong> — proven track record across crypto, AI, SaaS, and consumer brands</li>
-            <li><strong>2-4 weeks to results</strong> — 85% of campaigns hit 1M views within first 14 days</li>
-            <li><strong>60% lower CPM</strong> — compared to paid social ads</li>
+            <li>Clip creation and editing</li>
+            <li>Clipper management and payouts</li>
+            <li>Real-time performance tracking</li>
+            <li>Platform-specific optimization</li>
           </ul>
-        </section>
-
-        <section>
-          <h2>Why Choose Lumina Clippers as Your Clipping Agency</h2>
           <p>
-            Lumina Clippers is the industry&apos;s leading <strong>clipping agency</strong>, trusted by 200+ brands 
-            including AI startups, crypto protocols, SaaS companies, and consumer apps. As a full-service 
-            <strong>video clipping agency</strong>, we own the entire distribution stack—clip creation, clipper management, 
-            payout infrastructure, and real-time analytics—delivering massive reach without operational complexity.
+            <strong>Ready to grow your brand?</strong> Book a free consultation today.
           </p>
         </section>
 
         <section>
-          <h2>Learn More About Content Clipping</h2>
+          <h2>Learn More</h2>
           <nav>
             <ul>
-              <li><a href="/how-it-works">See how content clipping distribution works →</a></li>
-              <li><a href="/glossary">Explore our content clipping glossary →</a></li>
-              <li><a href="/casestudies">Read brand success stories and case studies →</a></li>
-              <li><a href="/about">About Lumina Clippers and our team →</a></li>
-              <li><a href="/contact">Contact us to discuss your campaign →</a></li>
+              <li><a href="/how-it-works">See how it works step by step →</a></li>
+              <li><a href="/casestudies">Read success stories from brands →</a></li>
+              <li><a href="/tools/roi-calculator.html">Calculate your ROI →</a></li>
+              <li><a href="/contact">Book your free consultation →</a></li>
             </ul>
           </nav>
         </section>
