@@ -3,9 +3,9 @@ import Image from "next/image";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Clipping Agency for Brands | Lumina Clippers — Content Distribution",
+  title: "Lumina Clippers — Clipping Agency for Brands",
   description:
-    "Lumina Clippers distributes your content across TikTok, Reels, X, and Shorts. 62,900+ clippers. 18B+ views delivered. Book a free consultation today.",
+    "Lumina Clippers distributes your content across TikTok, Reels, X & Shorts. 62,900+ clippers. 18B+ views. Book a free consultation.",
   keywords: [
     "clipping agency",
     "content clipping agency",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "Lumina Clippers — The Clipping Network for Brands",
+    title: "Lumina Clippers — Clipping Agency for Brands",
     description:
-      "We help brands reach millions through 62,900+ clippers on TikTok, Reels, X, and Shorts. Book a free consultation.",
+      "62,900+ clippers. 18B+ views delivered. We distribute your content across TikTok, Reels, X & Shorts.",
     images: [
       {
         url: "https://luminaclippers.com/images/results-stats.svg",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lumina Clippers — The Clipping Network for Brands",
+    title: "Lumina Clippers — Clipping Agency for Brands",
     description:
-      "Reach millions through 62,900+ clippers on TikTok, Reels, and Shorts. Book a free consultation today.",
+      "62,900+ clippers. 18B+ views delivered. Content distribution across TikTok, Reels, X & Shorts.",
     images: [
       "https://luminaclippers.com/images/results-stats.svg",
     ],
