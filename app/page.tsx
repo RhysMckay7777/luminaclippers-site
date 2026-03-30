@@ -53,10 +53,121 @@ export const metadata: Metadata = {
   },
 };
 
-// ImageObject structured data for SEO
-const imageSchemaData = {
+// Combined structured data for SEO (Organization, Service, Images)
+const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
+    // Organization Schema - Entity verification for AI crawlers
+    {
+      "@type": "Organization",
+      "@id": "https://luminaclippers.com/#organization",
+      "name": "Lumina Clippers",
+      "url": "https://luminaclippers.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://luminaclippers.com/favicon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "Lumina Clippers is a clipping agency distributing brand content across TikTok, Reels, X, and YouTube Shorts with 62,900+ clippers and 18B+ views delivered.",
+      "foundingDate": "2024",
+      "sameAs": [
+        "https://twitter.com/luminaclippers",
+        "https://www.linkedin.com/company/luminaclippers",
+        "https://www.instagram.com/luminaclippers"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "url": "https://luminaclippers.com/contact",
+        "availableLanguage": "English"
+      },
+      "areaServed": "Worldwide",
+      "knowsAbout": [
+        "Content Clipping",
+        "TikTok Marketing",
+        "Short-Form Video Distribution",
+        "Brand Awareness",
+        "Social Media Marketing"
+      ]
+    },
+    // Service Schema - Core offering
+    {
+      "@type": "Service",
+      "@id": "https://luminaclippers.com/#service",
+      "serviceType": "Content Clipping and Distribution",
+      "name": "Content Clipping Service",
+      "provider": {
+        "@type": "Organization",
+        "@id": "https://luminaclippers.com/#organization"
+      },
+      "areaServed": "Worldwide",
+      "description": "AI-powered short-form video clipping and multi-platform distribution across TikTok, Instagram Reels, X, and YouTube Shorts. Turn long-form content into viral clips distributed by 62,900+ clippers.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://luminaclippers.com/contact",
+        "priceCurrency": "USD",
+        "price": "3000",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Content Clipping Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Clip Selection",
+              "description": "AI identifies the best 15-30 viral moments from your long-form content"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Multi-Platform Distribution",
+              "description": "Clips posted across TikTok, Reels, Shorts, and X by 62,900+ clippers"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Performance Analytics",
+              "description": "Real-time tracking of views and engagement across all platforms"
+            }
+          }
+        ]
+      }
+    },
+    // WebSite Schema
+    {
+      "@type": "WebSite",
+      "@id": "https://luminaclippers.com/#website",
+      "url": "https://luminaclippers.com",
+      "name": "Lumina Clippers",
+      "description": "The clipping agency for brands. 62,900+ clippers. 18B+ views delivered.",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://luminaclippers.com/#organization"
+      }
+    },
+    // BreadcrumbList Schema
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://luminaclippers.com/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://luminaclippers.com"
+        }
+      ]
+    },
+    // ImageObject Schemas
     {
       "@type": "ImageObject",
       "@id": "https://luminaclippers.com/images/clipping-process.svg",
@@ -96,11 +207,11 @@ const imageSchemaData = {
 export default function Home() {
   return (
     <main>
-      {/* Structured Data for Images */}
+      {/* Structured Data - Organization, Service, WebSite, BreadcrumbList, Images */}
       <Script
-        id="image-schema"
+        id="structured-data"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
       {/* SEO Content - Optimized for readability (Grade 8 level) */}
