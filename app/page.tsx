@@ -344,10 +344,10 @@ export default function Home() {
           </figure>
           
           <ul>
-            <li><strong>TikTok</strong> — 1B+ users, best for going viral</li>
-            <li><strong>Instagram Reels</strong> — Great for sales and conversions</li>
-            <li><strong>YouTube Shorts</strong> — 2B+ users, helps your SEO</li>
-            <li><strong>X (Twitter)</strong> — Perfect for B2B and tech brands</li>
+            <li><a href="/tiktok-clipping-agency/"><strong>TikTok</strong></a> — 1B+ users, best for going viral</li>
+            <li><a href="/instagram-reels-distribution/"><strong>Instagram Reels</strong></a> — Great for sales and conversions</li>
+            <li><a href="/youtube-shorts-syndication/"><strong>YouTube Shorts</strong></a> — 2B+ users, helps your SEO</li>
+            <li><a href="/x-twitter-clip-distribution/"><strong>X (Twitter)</strong></a> — Perfect for B2B and tech brands</li>
             <li><strong>Facebook Reels</strong> — Reaches all age groups</li>
           </ul>
         </section>
