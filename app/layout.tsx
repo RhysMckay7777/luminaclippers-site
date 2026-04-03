@@ -125,6 +125,13 @@ export default function RootLayout({
           />
         </noscript>
         
+        {/* Critical CSS - Inlined for faster first paint */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          body{margin:0;padding:0;background:#0a0a0a;color:#ededed;font-family:system-ui,-apple-system,sans-serif}
+          .seo-content{position:absolute;left:0;top:0;width:100%;opacity:0.01;pointer-events:none;z-index:-1}
+          iframe{display:block;width:100vw;height:100vh;border:0}
+        `}} />
+        
         {/* Preload LCP hero image for faster paint */}
         <link
           rel="preload"
@@ -132,6 +139,9 @@ export default function RootLayout({
           href="https://framerusercontent.com/images/dvoyd8VR77Y3RUHCGPJlApIPjo.png"
           fetchPriority="high"
         />
+        
+        {/* Preload main Framer stylesheet */}
+        <link rel="preload" href="/styles.css" as="style" />
         
         {/* Preload critical iframe */}
         <link rel="preload" href="/lumina.html" as="document" />

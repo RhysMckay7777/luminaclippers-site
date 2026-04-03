@@ -412,6 +412,7 @@ export default function Home() {
         <iframe
           title="Lumina Clippers Website"
           src="/lumina.html"
+          loading="eager"
           style={{ width: "100%", height: "100%", border: "0" }}
         />
       </div>
