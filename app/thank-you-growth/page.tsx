@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Important Next Steps — Lumina Clippers",
@@ -11,6 +12,61 @@ export const metadata: Metadata = {
 
 export default function ThankYouGrowth() {
   return (
+    <>
+      {/* Google Ads Conversion Tracking with Enhanced Conversions */}
+      <Script id="conversion-tracking" strategy="afterInteractive">
+        {`
+          // Wait for gtag to be available
+          function fireConversion() {
+            if (typeof gtag !== 'undefined') {
+              // Try to get user data from URL params (Calendly may pass these)
+              const urlParams = new URLSearchParams(window.location.search);
+              const email = urlParams.get('email') || urlParams.get('invitee_email') || '';
+              const name = urlParams.get('name') || urlParams.get('invitee_full_name') || '';
+              const phone = urlParams.get('phone') || '';
+              
+              // Parse first/last name if full name provided
+              let firstName = '';
+              let lastName = '';
+              if (name) {
+                const nameParts = name.trim().split(' ');
+                firstName = nameParts[0] || '';
+                lastName = nameParts.slice(1).join(' ') || '';
+              }
+              
+              // Set enhanced conversion data if available
+              if (email || phone || firstName) {
+                gtag('set', 'user_data', {
+                  'email': email || undefined,
+                  'phone_number': phone || undefined,
+                  'first_name': firstName || undefined,
+                  'last_name': lastName || undefined
+                });
+              }
+              
+              // Fire the conversion event
+              // NOTE: Replace CONVERSION_LABEL with actual label from Google Ads
+              gtag('event', 'conversion', {
+                'send_to': 'AW-17977271671/mqEKCLqUv8kaEPe58LI-',
+                'value': 1.0,
+                'currency': 'USD'
+              });
+              
+              console.log('Google Ads conversion fired', { email, firstName, lastName });
+            } else {
+              // Retry if gtag not loaded yet
+              setTimeout(fireConversion, 100);
+            }
+          }
+          
+          // Fire on page load
+          if (document.readyState === 'complete') {
+            fireConversion();
+          } else {
+            window.addEventListener('load', fireConversion);
+          }
+        `}
+      </Script>
     <div className="min-h-screen bg-black text-white">
       {/* Stop Header */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black to-transparent py-4">
@@ -115,5 +171,6 @@ export default function ThankYouGrowth() {
       {/* Footer gradient */}
       <div className="h-32 bg-gradient-to-t from-green-950/30 to-transparent" />
     </div>
+    </>
   );
 }

@@ -155,7 +155,38 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-17977271671');
+            
+            // Enable Enhanced Conversions for leads
+            gtag('config', 'AW-17977271671', {
+              'allow_enhanced_conversions': true
+            });
+            
+            // Function to set user data for enhanced conversions
+            window.setEnhancedConversionData = function(userData) {
+              gtag('set', 'user_data', {
+                'email': userData.email || undefined,
+                'phone_number': userData.phone || undefined,
+                'first_name': userData.firstName || undefined,
+                'last_name': userData.lastName || undefined
+              });
+            };
+            
+            // Function to fire conversion with enhanced data
+            window.gtag_report_conversion = function(url, userData) {
+              if (userData) {
+                window.setEnhancedConversionData(userData);
+              }
+              var callback = function () {
+                if (typeof(url) !== 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'AW-17977271671/BOOK_APPOINTMENT',
+                'event_callback': callback
+              });
+              return false;
+            };
           `}
         </Script>
         {/* SearchAtlas - deferred to reduce render blocking */}
