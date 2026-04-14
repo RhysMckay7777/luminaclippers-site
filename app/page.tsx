@@ -392,6 +392,9 @@ export default function Home() {
           <p>
             <strong>Ready to grow your brand?</strong> Book a free consultation today.
           </p>
+          <p>
+            <a href="/compare/">See how we compare →</a>
+          </p>
         </section>
 
         <section>
