@@ -408,6 +408,34 @@ export default function Home() {
             </ul>
           </nav>
         </section>
+
+        <section>
+          <h2>From the Blog</h2>
+          <p>
+            Practical guides on short-form video distribution, content clipping strategy, and brand
+            growth from the Lumina Clippers editorial team.
+          </p>
+          <ul>
+            <li>
+              <a href="/blog/short-form-video-roi-statistics">
+                Short-Form Video ROI Statistics Every Brand Should Know in 2025
+              </a>
+            </li>
+            <li>
+              <a href="/blog/how-brands-get-1-million-views-from-video-clipping">
+                How Brands Get 1M+ Views From Video Clipping (Real Data, No Fluff)
+              </a>
+            </li>
+            <li>
+              <a href="/blog/how-to-repurpose-long-form-video-for-tiktok">
+                How to Repurpose Long-Form Video for TikTok: A Brand&apos;s Guide (2025)
+              </a>
+            </li>
+          </ul>
+          <p>
+            <a href="/blog">Read all articles →</a>
+          </p>
+        </section>
       </article>
 
       {/* Visual Experience - Framer Design */}
