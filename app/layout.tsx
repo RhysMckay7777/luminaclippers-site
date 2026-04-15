@@ -98,26 +98,35 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Resource hints for Core Web Vitals optimization */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* fonts.googleapis.com preconnects removed — next/font self-hosts fonts */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://framerusercontent.com" />
         <link rel="dns-prefetch" href="https://dashboard.searchatlas.com" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        
-        {/* Meta Pixel Base Code */}
+
+        {/* Critical CSS inlined first — before any scripts — for fastest first paint */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          body{margin:0;padding:0;background:#0a0a0a;color:#ededed;font-family:system-ui,-apple-system,sans-serif}
+          .seo-content{position:absolute;left:0;top:0;width:100%;opacity:0.01;pointer-events:none;z-index:-1}
+          iframe{display:block;width:100vw;height:100vh;border:0}
+        `}} />
+
+        {/* Meta Pixel — afterInteractive ensures it never blocks render.
+            Guard prevents double-fire with the pixel inside the Framer iframe. */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1292583312359192');
-            fbq('track', 'PageView');
+            if (!window.fbq) {
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '1292583312359192');
+              fbq('track', 'PageView');
+            }
           `}
         </Script>
         <noscript>
@@ -125,27 +134,6 @@ export default function RootLayout({
             src="https://www.facebook.com/tr?id=1292583312359192&ev=PageView&noscript=1"
           />
         </noscript>
-        
-        {/* Critical CSS - Inlined for faster first paint */}
-        <style dangerouslySetInnerHTML={{ __html: `
-          body{margin:0;padding:0;background:#0a0a0a;color:#ededed;font-family:system-ui,-apple-system,sans-serif}
-          .seo-content{position:absolute;left:0;top:0;width:100%;opacity:0.01;pointer-events:none;z-index:-1}
-          iframe{display:block;width:100vw;height:100vh;border:0}
-        `}} />
-        
-        {/* Preload LCP hero image for faster paint */}
-        <link
-          rel="preload"
-          as="image"
-          href="https://framerusercontent.com/images/dvoyd8VR77Y3RUHCGPJlApIPjo.png"
-          fetchPriority="high"
-        />
-        
-        {/* Preload main Framer stylesheet */}
-        <link rel="preload" href="/styles.css" as="style" />
-        
-        {/* Preload critical iframe */}
-        <link rel="preload" href="/lumina.html" as="document" />
         
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17977271671"

@@ -1,15 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Performance optimizations for Core Web Vitals
   experimental: {
-    optimizeCss: true, // Enable CSS optimization
+    optimizeCss: true,
   },
   images: {
-    formats: ['image/avif', 'image/webp'], // Modern image formats
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "framerusercontent.com",
+      },
+    ],
   },
-  // Compress responses
   compress: true,
+  poweredByHeader: false,
 };
 
 export default nextConfig;

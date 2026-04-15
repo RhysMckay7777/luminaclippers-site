@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Script from "next/script";
+import FramerEmbed from "./components/FramerEmbed";
 
 export const metadata: Metadata = {
   title: "Clipping Agency for Brands | Lumina Clippers",
@@ -438,15 +439,8 @@ export default function Home() {
         </section>
       </article>
 
-      {/* Visual Experience - Framer Design */}
-      <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
-        <iframe
-          title="Lumina Clippers Website"
-          src="/lumina.html"
-          loading="eager"
-          style={{ width: "100%", height: "100%", border: "0" }}
-        />
-      </div>
+      {/* Visual Experience - Framer Design (deferred until after page load event) */}
+      <FramerEmbed />
     </main>
   );
 }
