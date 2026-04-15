@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://luminaclippers.com"),
-  title: "Clipping Agency for Brands | Lumina Clippers — Content Distribution",
+  title: "Clipping Agency for Brands | Lumina Clippers",
   description:
-    "Lumina Clippers is a clipping agency that distributes your content across TikTok, Reels, X, & Shorts. 62,900+ clippers. 18B+ views delivered. Book a consultation.",
+    "The #1 clipping agency for brands. Distribute your content across TikTok, Reels, X & Shorts with 62,900+ clippers and 18B+ views. Book a free consultation.",
   keywords: [
     "clipping agency",
     "content clipping agency",
@@ -45,6 +45,7 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
     },
   },
+  viewport: 'width=device-width, initial-scale=1',
   openGraph: {
     type: "website",
     url: "/",
