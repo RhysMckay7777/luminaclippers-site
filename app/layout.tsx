@@ -42,7 +42,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     googleBot: {
-      "max-image-preview": "large",
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
     },
   },
   viewport: 'width=device-width, initial-scale=1',
