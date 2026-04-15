@@ -1,0 +1,8 @@
+# Lumina Clippers Disavow File — Generated 2025
+# High-spam referring domains (spam score 50)
+domain:urls-shortener.eu
+domain:jake.eu
+domain:screenshots.wiki
+domain:buzzshrink.website
+domain:ready.pro
+domain:drjack.world
