@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 // Declare fbq type for TypeScript
 declare global {
@@ -12,8 +12,6 @@ declare global {
 const CALENDLY_URL = 'https://calendly.com/d/cyjt-srn-4mn/lumina-clippers-growth-opportunity-meet';
 
 export default function GrowthPage() {
-  const [bookCallRegions, setBookCallRegions] = useState<Array<{x: number, y: number, width: number, height: number}>>([]);
-
   useEffect(() => {
     // Register Service Worker to intercept booking redirects
     if ('serviceWorker' in navigator) {
@@ -38,79 +36,80 @@ export default function GrowthPage() {
 
     window.addEventListener('message', handleCalendlyEvent);
 
-    // Scan Framer iframe for "Book A Call" button locations
-    const scanForButtons = () => {
-      try {
-        const iframe = document.getElementById('framer-growth') as HTMLIFrameElement;
-        if (!iframe || !iframe.contentDocument) return;
+    // Try to intercept window.open calls from within the iframe
+    const originalOpen = window.open;
+    (window as any).open = function(url?: string | URL, target?: string, features?: string) {
+      // If any window.open is called with empty or relative URL, assume it's a booking button
+      const urlStr = String(url || '');
+      if (!urlStr || urlStr === './' || urlStr === './#bookacall' || urlStr === '#bookacall' || urlStr.includes('book')) {
+        window.location.href = CALENDLY_URL;
+        return null;
+      }
+      return originalOpen.apply(window, [url, target, features] as any);
+    };
 
-        const iframeDoc = iframe.contentDocument;
-        const iframeRect = iframe.getBoundingClientRect();
+    // Intercept all clicks on the page
+    // Since we can't access the iframe DOM, we'll listen for clicks that propagate
+    const handlePageClick = (e: Event) => {
+      const target = e.target as HTMLElement;
 
-        // Search for buttons/elements containing "Book A Call" or "Book An Intro"
-        const walker = iframeDoc.createTreeWalker(
-          iframeDoc.body,
-          NodeFilter.SHOW_TEXT,
-          null
-        );
-
-        const regions: Array<{x: number, y: number, width: number, height: number}> = [];
-        let textNode;
-
-        while ((textNode = walker.nextNode())) {
-          const text = textNode.textContent || '';
-          if ((text.includes('Book A Call') || text.includes('Book An')) && text.trim().length < 50) {
-            // Get the parent clickable element
-            let element: Node | null = textNode.parentElement;
-            let depth = 0;
-            while (element && depth < 5) {
-              const el = element as HTMLElement;
-              if (el.offsetParent !== null && (el.offsetHeight > 30 || el.offsetWidth > 80)) {
-                const rect = el.getBoundingClientRect();
-                if (rect.width > 40 && rect.height > 20) {
-                  regions.push({
-                    x: iframeRect.left + rect.left,
-                    y: iframeRect.top + rect.top,
-                    width: rect.width,
-                    height: rect.height,
-                  });
-                  break;
-                }
-              }
-              element = el.parentElement;
-              depth++;
-            }
-          }
+      // Check if click is on a link or button with "Book" in the text
+      if (target && target.textContent) {
+        const text = target.textContent.toLowerCase();
+        if ((text.includes('book') || text.includes('call')) && (text.includes('book') && text.includes('call'))) {
+          // This looks like a booking button
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = CALENDLY_URL;
+          return false;
         }
+      }
 
-        if (regions.length > 0) {
-          setBookCallRegions(regions);
+      // Check if the clicked element or its parents are inside the Framer iframe
+      // and likely a button (by position/size)
+      let element: HTMLElement | null = target;
+      while (element) {
+        if (element.id === 'framer-growth') {
+          // Click was inside the iframe, can't intercept directly
+          // But we can watch for navigation
+          break;
         }
-      } catch (e) {
-        // Cross-origin restriction or iframe not ready - will retry
+        element = element.parentElement;
       }
     };
 
-    // Scan when iframe loads
+    document.addEventListener('click', handlePageClick, { capture: true });
+
+    // Monitor iframe for any attempts to navigate
     const iframe = document.getElementById('framer-growth') as HTMLIFrameElement;
     if (iframe) {
-      iframe.addEventListener('load', scanForButtons);
+      // Try to detect when the iframe tries to navigate
+      iframe.addEventListener('load', () => {
+        try {
+          // This will fail for cross-origin, but we try anyway
+          const iframeDoc = iframe.contentDocument;
+          if (iframeDoc) {
+            // If we can access it, set up click handlers
+            iframeDoc.addEventListener('click', (e: Event) => {
+              const target = e.target as HTMLElement;
+              if (target?.textContent?.toLowerCase().includes('book')) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = CALENDLY_URL;
+              }
+            }, true);
+          }
+        } catch (e) {
+          // Cross-origin iframe - expected
+        }
+      });
     }
 
-    // Periodic scanning to catch dynamically loaded content
-    const scanInterval = setInterval(scanForButtons, 1500);
-
-    // Also scan immediately
-    setTimeout(scanForButtons, 500);
-    setTimeout(scanForButtons, 2000);
-
-    // Cleanup listeners on unmount
+    // Cleanup
     return () => {
-      clearInterval(scanInterval);
+      (window as any).open = originalOpen;
+      document.removeEventListener('click', handlePageClick);
       window.removeEventListener('message', handleCalendlyEvent);
-      if (iframe) {
-        iframe.removeEventListener('load', scanForButtons);
-      }
     };
   }, []);
 
@@ -122,7 +121,7 @@ export default function GrowthPage() {
       <meta property="og:description" content="Flood social feeds with hundreds of clips so your brand dominates the conversation." />
       <meta property="og:type" content="website" />
 
-      {/* Framer iframe */}
+      {/* Framer iframe - fully interactive */}
       <iframe
         id="framer-growth"
         src="https://caring-vision-569896.framer.app/growth"
@@ -140,43 +139,34 @@ export default function GrowthPage() {
         allowFullScreen
       />
 
-      {/* Transparent clickable overlay for "Book A Call" buttons */}
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-          zIndex: 1000,
+      {/* Inline script to intercept clicks at the earliest opportunity */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            const CALENDLY_URL = '${CALENDLY_URL}';
+
+            // Override window.open globally and immediately
+            const originalOpen = window.open;
+            window.open = function(url, target, features) {
+              if (!url || String(url).includes('book') || String(url) === '' || String(url) === './') {
+                window.location.href = CALENDLY_URL;
+                return null;
+              }
+              return originalOpen.apply(this, arguments);
+            };
+
+            // Intercept all clicks
+            document.addEventListener('click', function(e) {
+              const target = e.target;
+              if (target && target.textContent && target.textContent.toLowerCase().includes('book') && target.textContent.toLowerCase().includes('call')) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = CALENDLY_URL;
+              }
+            }, true);
+          `,
         }}
-      >
-        {bookCallRegions.map((region, idx) => (
-          <button
-            key={idx}
-            onClick={() => {
-              window.location.href = CALENDLY_URL;
-            }}
-            style={{
-              position: 'fixed',
-              left: `${region.x}px`,
-              top: `${region.y}px`,
-              width: `${region.width}px`,
-              height: `${region.height}px`,
-              border: 'none',
-              background: 'transparent',
-              cursor: 'pointer',
-              pointerEvents: 'auto',
-              zIndex: 1001,
-              padding: 0,
-              margin: 0,
-            }}
-            aria-label="Book A Call - Navigate to Calendly"
-            type="button"
-          />
-        ))}
-      </div>
+      />
     </>
   )
 }
