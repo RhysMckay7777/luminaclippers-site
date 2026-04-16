@@ -31,13 +31,13 @@ export default function GrowthPage() {
 
     // Override window.open to redirect booking links
     const originalOpen = window.open;
-    window.open = function(url?: string | URL, ...args: unknown[]) {
+    window.open = function(url?: string | URL, target?: string, features?: string) {
       if (url === './#bookacall' || url === './') {
         window.location.href = CALENDLY_URL;
         return null;
       }
-      return originalOpen.apply(window, [url, ...args] as Parameters<typeof originalOpen>);
-    };
+      return originalOpen.apply(window, [url, target, features] as Parameters<typeof originalOpen>);
+    } as typeof window.open;
 
     // Intercept anchor clicks
     const handleClick = (e: Event) => {
