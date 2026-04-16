@@ -113,7 +113,7 @@ export default function HowContentClippingWorks() {
             Book a consultation to see how Lumina Clippers can generate 10M+ monthly views for your brand.
           </p>
           <Link 
-            href="https://calendly.com/d/cs8y-wnx-gp5/lumina-clippers-growth-event"
+            href="https://calendly.com/d/cyjt-srn-4mn/lumina-clippers-growth-opportunity-meet"
             className="inline-block bg-green-500 text-black font-bold py-3 px-8 rounded-lg hover:bg-green-400 transition"
           >
             Book a Consultation →
