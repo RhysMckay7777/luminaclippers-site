@@ -36,79 +36,53 @@ export default function GrowthPage() {
 
     window.addEventListener('message', handleCalendlyEvent);
 
-    // Try to intercept window.open calls from within the iframe
+    // Override window.open for any booking-related navigation
     const originalOpen = window.open;
     (window as any).open = function(url?: string | URL, target?: string, features?: string) {
-      // If any window.open is called with empty or relative URL, assume it's a booking button
       const urlStr = String(url || '');
-      if (!urlStr || urlStr === './' || urlStr === './#bookacall' || urlStr === '#bookacall' || urlStr.includes('book')) {
+      if (!urlStr || urlStr === '/' || urlStr.includes('book') || urlStr === '#' || urlStr === '.') {
         window.location.href = CALENDLY_URL;
         return null;
       }
       return originalOpen.apply(window, [url, target, features] as any);
     };
 
-    // Intercept all clicks on the page
-    // Since we can't access the iframe DOM, we'll listen for clicks that propagate
-    const handlePageClick = (e: Event) => {
+    // Global click interceptor for buttons containing "Book"
+    document.addEventListener('click', (e: Event) => {
       const target = e.target as HTMLElement;
+      if (!target) return;
 
-      // Check if click is on a link or button with "Book" in the text
-      if (target && target.textContent) {
-        const text = target.textContent.toLowerCase();
-        if ((text.includes('book') || text.includes('call')) && (text.includes('book') && text.includes('call'))) {
-          // This looks like a booking button
+      // Walk up the DOM tree to find a clickable element
+      let element: HTMLElement | null = target;
+      for (let i = 0; i < 10; i++) {
+        if (!element) break;
+
+        const text = (element.textContent || '').toLowerCase();
+        const isButton = element.tagName === 'BUTTON' || element.tagName === 'A' || element.className.includes('button');
+        const isBooking = text.includes('book') || text.includes('call') || text.includes('intro');
+
+        if (isButton && isBooking) {
           e.preventDefault();
           e.stopPropagation();
           window.location.href = CALENDLY_URL;
-          return false;
+          return;
         }
-      }
 
-      // Check if the clicked element or its parents are inside the Framer iframe
-      // and likely a button (by position/size)
-      let element: HTMLElement | null = target;
-      while (element) {
-        if (element.id === 'framer-growth') {
-          // Click was inside the iframe, can't intercept directly
-          // But we can watch for navigation
-          break;
-        }
         element = element.parentElement;
       }
-    };
+    }, { capture: true });
 
-    document.addEventListener('click', handlePageClick, { capture: true });
+    // Listen for any unload/navigation attempts
+    const originalLocation = window.location;
+    window.addEventListener('beforeunload', (e) => {
+      // Allow Calendly redirects
+      if (!window.location.href.includes('calendly')) {
+        // This event fires for ANY navigation
+      }
+    });
 
-    // Monitor iframe for any attempts to navigate
-    const iframe = document.getElementById('framer-growth') as HTMLIFrameElement;
-    if (iframe) {
-      // Try to detect when the iframe tries to navigate
-      iframe.addEventListener('load', () => {
-        try {
-          // This will fail for cross-origin, but we try anyway
-          const iframeDoc = iframe.contentDocument;
-          if (iframeDoc) {
-            // If we can access it, set up click handlers
-            iframeDoc.addEventListener('click', (e: Event) => {
-              const target = e.target as HTMLElement;
-              if (target?.textContent?.toLowerCase().includes('book')) {
-                e.preventDefault();
-                e.stopPropagation();
-                window.location.href = CALENDLY_URL;
-              }
-            }, true);
-          }
-        } catch (e) {
-          // Cross-origin iframe - expected
-        }
-      });
-    }
-
-    // Cleanup
     return () => {
       (window as any).open = originalOpen;
-      document.removeEventListener('click', handlePageClick);
       window.removeEventListener('message', handleCalendlyEvent);
     };
   }, []);
@@ -121,7 +95,7 @@ export default function GrowthPage() {
       <meta property="og:description" content="Flood social feeds with hundreds of clips so your brand dominates the conversation." />
       <meta property="og:type" content="website" />
 
-      {/* Framer iframe - fully interactive */}
+      {/* Framer iframe */}
       <iframe
         id="framer-growth"
         src="https://caring-vision-569896.framer.app/growth"
@@ -137,33 +111,66 @@ export default function GrowthPage() {
         }}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
+        title="Lumina Clippers Growth Page"
       />
 
-      {/* Inline script to intercept clicks at the earliest opportunity */}
+      {/* Script that runs BEFORE React loads to ensure earliest possible interception */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            const CALENDLY_URL = '${CALENDLY_URL}';
+            (function() {
+              const CALENDLY_URL = '${CALENDLY_URL}';
 
-            // Override window.open globally and immediately
-            const originalOpen = window.open;
-            window.open = function(url, target, features) {
-              if (!url || String(url).includes('book') || String(url) === '' || String(url) === './') {
-                window.location.href = CALENDLY_URL;
-                return null;
-              }
-              return originalOpen.apply(this, arguments);
-            };
+              // Stage 1: Override window.open immediately
+              const originalOpen = window.open || function() {};
+              window.open = function(url, target, features) {
+                const urlStr = String(url || '');
+                if (!urlStr || urlStr === '/' || urlStr.includes('book') || urlStr === '#') {
+                  window.location.href = CALENDLY_URL;
+                  return null;
+                }
+                return originalOpen.apply(window, arguments);
+              };
 
-            // Intercept all clicks
-            document.addEventListener('click', function(e) {
-              const target = e.target;
-              if (target && target.textContent && target.textContent.toLowerCase().includes('book') && target.textContent.toLowerCase().includes('call')) {
-                e.preventDefault();
-                e.stopPropagation();
-                window.location.href = CALENDLY_URL;
+              // Stage 2: Intercept clicks as early as possible
+              function interceptClicks(e) {
+                const target = e.target;
+                if (!target) return;
+
+                // Check element and up to 10 parents
+                let el = target;
+                for (let i = 0; i < 10; i++) {
+                  if (!el) break;
+                  const text = (el.textContent || '').toLowerCase();
+                  const tag = el.tagName;
+
+                  // Look for "Book A Call", "Book An Intro", etc.
+                  if ((text.includes('book') && (text.includes('call') || text.includes('intro'))) ||
+                      (tag === 'BUTTON' && text.includes('book')) ||
+                      (tag === 'A' && text.includes('book'))) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.location.href = CALENDLY_URL;
+                    return false;
+                  }
+
+                  el = el.parentElement;
+                }
               }
-            }, true);
+
+              // Attach at document level with capture
+              document.addEventListener('click', interceptClicks, true);
+              document.addEventListener('mousedown', interceptClicks, true);
+
+              // Stage 3: Watch for navigation via any means
+              let lastHref = window.location.href;
+              setInterval(function() {
+                if (window.location.href !== lastHref) {
+                  lastHref = window.location.href;
+                  // Navigation detected - let it happen (unless we catch it above)
+                }
+              }, 100);
+            })();
           `,
         }}
       />
