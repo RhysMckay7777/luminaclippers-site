@@ -112,10 +112,10 @@ export default function GrowthPage() {
       <meta property="og:description" content="Flood social feeds with hundreds of clips so your brand dominates the conversation." />
       <meta property="og:type" content="website" />
 
-      {/* Framer iframe */}
+      {/* Framer iframe - with cache bust to ensure fresh content */}
       <iframe
         id="framer-growth"
-        src="https://caring-vision-569896.framer.app/growth"
+        src={`https://caring-vision-569896.framer.app/growth?t=${Date.now()}`}
         style={{
           width: '100%',
           height: '100vh',
@@ -126,7 +126,7 @@ export default function GrowthPage() {
           right: 0,
           bottom: 0,
         }}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
         title="Lumina Clippers Growth Page"
       />
