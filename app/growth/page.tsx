@@ -36,6 +36,22 @@ export default function GrowthPage() {
 
     window.addEventListener('message', handleCalendlyEvent);
 
+    // Listen for hash changes from Framer iframe
+    // Framer button navigates to #bookacall, so catch that and redirect
+    const handleHashChange = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('bookacall') || hash === '#book' || hash === '#') {
+        window.location.href = CALENDLY_URL;
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Check initial hash on page load
+    if (window.location.hash.includes('bookacall')) {
+      window.location.href = CALENDLY_URL;
+    }
+
     // Override window.open for any booking-related navigation
     const originalOpen = window.open;
     (window as any).open = function(url?: string | URL, target?: string, features?: string) {
@@ -84,6 +100,7 @@ export default function GrowthPage() {
     return () => {
       (window as any).open = originalOpen;
       window.removeEventListener('message', handleCalendlyEvent);
+      window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
 
