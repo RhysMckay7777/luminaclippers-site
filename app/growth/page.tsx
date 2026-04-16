@@ -31,7 +31,7 @@ export default function GrowthPage() {
 
     // Override window.open to redirect booking links
     const originalOpen = window.open;
-    window.open = function(url: string, ...args: unknown[]) {
+    window.open = function(url?: string | URL, ...args: unknown[]) {
       if (url === './#bookacall' || url === './') {
         window.location.href = CALENDLY_URL;
         return null;
