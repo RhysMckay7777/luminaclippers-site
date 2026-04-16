@@ -9,6 +9,8 @@ declare global {
   }
 }
 
+const CALENDLY_URL = 'https://calendly.com/d/cyjt-srn-4mn/lumina-clippers-growth-opportunity-meet';
+
 export default function GrowthPage() {
   useEffect(() => {
     // Track GrowthPageView custom event
@@ -27,8 +29,35 @@ export default function GrowthPage() {
 
     window.addEventListener('message', handleCalendlyEvent);
 
-    // Cleanup listener on unmount
+    // Override window.open to redirect booking links
+    const originalOpen = window.open;
+    window.open = function(url: string, ...args: unknown[]) {
+      if (url === './#bookacall' || url === './') {
+        window.location.href = CALENDLY_URL;
+        return null;
+      }
+      return originalOpen.apply(window, [url, ...args] as Parameters<typeof originalOpen>);
+    };
+
+    // Intercept anchor clicks
+    const handleClick = (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A') {
+        const href = (target as HTMLAnchorElement).href;
+        if (href.includes('./#bookacall') || href.endsWith('./')) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = CALENDLY_URL;
+        }
+      }
+    };
+
+    document.addEventListener('click', handleClick, true);
+
+    // Cleanup listeners on unmount
     return () => {
+      window.open = originalOpen;
+      document.removeEventListener('click', handleClick, true);
       window.removeEventListener('message', handleCalendlyEvent);
     };
   }, []);
